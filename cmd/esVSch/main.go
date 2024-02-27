@@ -18,43 +18,18 @@ const numberOfVehicles = 5000
 
 func main() {
 	// start elastic container
-	fmt.Println("Starting Elastic Container")
-	elastic, err := containers.NewElasticContainer(context.TODO())
+	esModule, chModule, chService, err := startContainers()
 	if err != nil {
-		fmt.Printf("failed to create Elastic container: %v", err)
+		fmt.Printf("failed to start containers: %v", err)
 		return
 	}
-	defer elastic.Cleanup()
-	containers.AddStatusMapping(context.Background(), elastic.Client)
-
-	fmt.Println("Starting ClickHouse Container")
-	chModule, err := containers.NewClickHouseContainer(context.TODO())
-	if err != nil {
-		fmt.Printf("failed to create ClickHouse container: %v", err)
-		return
-	}
+	defer esModule.Cleanup()
 	defer chModule.Cleanup()
-	host, err := chModule.Container.ConnectionHost(context.TODO())
-	if err != nil {
-		fmt.Printf("failed to get ClickHouse container host: %v", err)
-		return
-	}
+	fmt.Printf("Containers started\n")
 
-	chService, err := clickhouse.New(host)
-	if err != nil {
-		fmt.Printf("failed to create ClickHouse service: %v", err)
-		return
-	}
-	err = chService.CreateVSSTable(context.Background())
-	if err != nil {
-		fmt.Printf("failed to create VSS table: %v", err)
-		return
-	}
-
-	fmt.Println("Containers started")
 	start := time.Now()
 	fmt.Println("Creating Vehicles")
-	vehicles, err := createVehicle()
+	vehicles, err := createVehicle(numberOfVehicles)
 	if err != nil {
 		fmt.Printf("failed to create vehicles: %v", err)
 		return
@@ -74,7 +49,7 @@ func main() {
 
 	fmt.Println("Inserting Vehicles into Elastic")
 	start = time.Now()
-	err = insertVehiclesIntoElatic(context.Background(), elastic.Client, vehicles)
+	err = insertVehiclesIntoElatic(context.Background(), esModule.Client, vehicles)
 	if err != nil {
 		fmt.Printf("failed to insert vehicles into elastic: %v", err)
 		return
@@ -90,12 +65,47 @@ func main() {
 	fmt.Println("Cya Later!")
 }
 
+func startContainers() (*containers.Elastic, *containers.ClickHouse, *clickhouse.Service, error) {
+	elastic, err := containers.NewElasticContainer(context.TODO())
+	if err != nil {
+		return nil, nil, nil, fmt.Errorf("failed to create Elastic container: %w", err)
+	}
+	containers.AddStatusMapping(context.Background(), elastic.Client)
+
+	chModule, err := containers.NewClickHouseContainer(context.TODO())
+	if err != nil {
+		elastic.Cleanup()
+		return nil, nil, nil, fmt.Errorf("failed to create ClickHouse container: %w", err)
+	}
+	host, err := chModule.Container.ConnectionHost(context.TODO())
+	if err != nil {
+		chModule.Cleanup()
+		elastic.Cleanup()
+		return nil, nil, nil, fmt.Errorf("failed to get ClickHouse host: %w", err)
+	}
+
+	chService, err := clickhouse.New(host)
+	if err != nil {
+		chModule.Cleanup()
+		elastic.Cleanup()
+		return nil, nil, nil, fmt.Errorf("failed to create ClickHouse service: %w", err)
+	}
+	err = chService.CreateVSSTable(context.Background())
+	if err != nil {
+		chService.Close()
+		chModule.Cleanup()
+		elastic.Cleanup()
+		return nil, nil, nil, fmt.Errorf("failed to create VSS table in Clickhou: %w", err)
+	}
+	return elastic, chModule, chService, nil
+}
+
 // creatVehicle creates a new fake elatic status
-func createVehicle() ([]*model.DataPoint, error) {
+func createVehicle(numOfVehicles int) ([]*model.DataPoint, error) {
 	fake.Setup()
 	// create a thousand fake vehicles
-	vehicles := make([]*model.DataPoint, numberOfVehicles)
-	for i := range numberOfVehicles {
+	vehicles := make([]*model.DataPoint, numOfVehicles)
+	for i := range numOfVehicles {
 		vehicle, err := fake.ElaticStatus()
 		if err != nil {
 			return nil, fmt.Errorf("failed to create fake vehicle: %w", err)
