@@ -10,17 +10,6 @@ import (
 	"github.com/brianvoe/gofakeit/v7/source"
 )
 
-// VSSVehicle will create a model.Vehicle with fake data.
-func VSSVehicle() (*model.Vehicle, error) {
-	var vehicle model.Vehicle
-	faker := gofakeit.New(0)
-	err := faker.Struct(&vehicle)
-	if err != nil {
-		return nil, fmt.Errorf("error creating fake vehicle: %w", err)
-	}
-	return &vehicle, nil
-}
-
 // ElaticStatus will create a model.DataPoint with fake data.
 func ElaticStatus() (*model.DataPoint, error) {
 	var dataPoint model.DataPoint

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.2
 // source: vspec.proto
 
-package model
+package protobuf
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

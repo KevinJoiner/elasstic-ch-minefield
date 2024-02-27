@@ -7,15 +7,14 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 	"github.com/KevinJoiner/vss-translator/internal/model"
 	"github.com/KevinJoiner/vss-translator/pkg/containers"
-	"github.com/KevinJoiner/vss-translator/pkg/convert"
 	"github.com/KevinJoiner/vss-translator/pkg/fake"
+	"github.com/KevinJoiner/vss-translator/pkg/service/clickhouse"
 	"github.com/elastic/go-elasticsearch/v8"
 )
 
-const numberOfVehicles = 50000
+const numberOfVehicles = 5000
 
 func main() {
 	// start elastic container
@@ -29,13 +28,24 @@ func main() {
 	containers.AddStatusMapping(context.Background(), elastic.Client)
 
 	fmt.Println("Starting ClickHouse Container")
-	clickhouse, err := containers.NewClickHouseContainer(context.TODO())
+	chModule, err := containers.NewClickHouseContainer(context.TODO())
 	if err != nil {
 		fmt.Printf("failed to create ClickHouse container: %v", err)
 		return
 	}
-	defer clickhouse.Cleanup()
-	err = containers.CreateVSSTable(context.Background(), clickhouse.Client)
+	defer chModule.Cleanup()
+	host, err := chModule.Container.ConnectionHost(context.TODO())
+	if err != nil {
+		fmt.Printf("failed to get ClickHouse container host: %v", err)
+		return
+	}
+
+	chService, err := clickhouse.New(host)
+	if err != nil {
+		fmt.Printf("failed to create ClickHouse service: %v", err)
+		return
+	}
+	err = chService.CreateVSSTable(context.Background())
 	if err != nil {
 		fmt.Printf("failed to create VSS table: %v", err)
 		return
@@ -54,7 +64,7 @@ func main() {
 
 	fmt.Println("Inserting Vehicles into ClickHouse")
 	start = time.Now()
-	err = insertVehiclesIntoClickhouse(context.Background(), vehicles, clickhouse.Client)
+	err = chService.InsertVehiclesFromES(context.Background(), vehicles)
 	if err != nil {
 		fmt.Printf("failed to insert vehicles into clickhouse: %v", err)
 		return
@@ -93,25 +103,6 @@ func createVehicle() ([]*model.DataPoint, error) {
 		vehicles[i] = vehicle
 	}
 	return vehicles, nil
-}
-
-// writeProtoVehicles writes the proto encoded vehicles to a tmp file
-func insertVehiclesIntoClickhouse(ctx context.Context, vehicles []*model.DataPoint, chConn driver.Conn) error {
-	batch, err := chConn.PrepareBatch(ctx, "INSERT into vss")
-	if err != nil {
-		return fmt.Errorf("failed to prepare batch: %w", err)
-	}
-	for _, vehicle := range vehicles {
-		err := batch.AppendStruct(convert.ESStatusToCHVehicle(vehicle))
-		if err != nil {
-			return fmt.Errorf("failed to append vehicle to batch: %w", err)
-		}
-	}
-	err = batch.Send()
-	if err != nil {
-		return fmt.Errorf("failed to send batch: %w", err)
-	}
-	return nil
 }
 
 // insertVehiclesIntoElatic inserts the vehicles into elatic.

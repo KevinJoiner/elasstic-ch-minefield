@@ -1,3 +1,4 @@
+// Was for generating CH types from clickhouse schema when we were using protobuf
 package main
 
 import (

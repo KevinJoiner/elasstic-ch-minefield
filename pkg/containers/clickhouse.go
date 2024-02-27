@@ -6,9 +6,6 @@ import (
 	"fmt"
 
 	"github.com/ClickHouse/ch-go"
-	"github.com/ClickHouse/clickhouse-go/v2"
-	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	vsstable "github.com/KevinJoiner/vss-translator/internal/generated/vss"
 	"github.com/testcontainers/testcontainers-go"
 	chmodule "github.com/testcontainers/testcontainers-go/modules/clickhouse"
 )
@@ -19,7 +16,6 @@ const (
 )
 
 type ClickHouse struct {
-	Client    driver.Conn
 	Container *chmodule.ClickHouseContainer
 	cleanup   func()
 }
@@ -35,22 +31,8 @@ func NewClickHouseContainer(ctx context.Context) (*ClickHouse, error) {
 		cleanup()
 		return nil, fmt.Errorf("failed to create ClickHouse container: %w", err)
 	}
-	host, err := chContainer.ConnectionHost(context.TODO())
-	if err != nil {
-		cleanup()
-		return nil, fmt.Errorf("failed to get connection host: %w", err)
-	}
-
-	conn, err := clickhouse.Open(&clickhouse.Options{
-		Addr: []string{host},
-	})
-	if err != nil {
-		cleanup()
-		return nil, err
-	}
 
 	return &ClickHouse{
-		Client:    conn,
 		Container: chContainer,
 		cleanup:   cleanup,
 	}, nil
@@ -75,13 +57,4 @@ func CreateClickHouseContainer(ctx context.Context) (*chmodule.ClickHouseContain
 		}
 	}
 	return clickHouseContainer, cleanup, nil
-}
-
-// CreateVSSTable VSS table in ClickHouse.
-func CreateVSSTable(ctx context.Context, conn driver.Conn) error {
-	err := conn.Exec(ctx, vsstable.VSSTableCreateQuery)
-	if err != nil {
-		return fmt.Errorf("query failed: %w", err)
-	}
-	return nil
 }
