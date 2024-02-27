@@ -1,0 +1,44 @@
+
+# Overlay to extend vehicle with dimo specific fields.
+# Dependencies to other overlays: None
+# Known conflicts with other overlays: None
+#
+Vehicle:
+  type: branch
+
+Vehicle.DIMO:
+  type: branch
+  description: dimo specific metadata.
+
+Vehicle.DIMO.Subject:
+  type: sensor
+  datatype: string
+  description: subjet of this vehicle data
+
+Vehicle.DIMO.Timestamp:
+  datatype: string
+  type: sensor
+  unit: iso8601
+  description: timestamp of when this data was colllected
+  
+Vehicle.DIMO.Source:
+  type: sensor
+  datatype: string
+  description: where the data was sourced from
+
+Vehicle.DIMO.Type:
+  type: sensor
+  datatype: string
+  description: type of data collected
+
+Vehicle.DIMO.DefinitionID:
+  type: sensor
+  datatype: string
+  description: ID for the vehicles definition
+
+Vehicle.DIMO.VehicleID:
+  type: sensor
+  datatype: string
+  description: unque DIMO ID for the vehicle
+
+

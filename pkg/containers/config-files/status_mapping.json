@@ -1,0 +1,192 @@
+{
+    "dynamic": "true",
+    "_size": {
+        "enabled": true
+    },
+    "dynamic_date_formats": [
+        "strict_date_optional_time",
+        "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+    ],
+    "dynamic_templates": [],
+    "date_detection": true,
+    "numeric_detection": false,
+    "properties": {
+        "data": {
+            "properties": {
+                "ambientTemp": {
+                    "type": "float"
+                },
+                "batteryCapacity": {
+                    "type": "long"
+                },
+                "chargeLimit": {
+                    "type": "float"
+                },
+                "charger": {
+                    "properties": {
+                        "power": {
+                            "type": "float"
+                        }
+                    }
+                },
+                "charging": {
+                    "type": "boolean"
+                },
+                "deviceDefinitionId": {
+                    "type": "keyword"
+                },
+                "errors": {
+                    "properties": {
+                        "description": {
+                            "type": "keyword"
+                        },
+                        "errorCode": {
+                            "type": "long"
+                        },
+                        "errorType": {
+                            "type": "keyword"
+                        },
+                        "resolution": {
+                            "properties": {
+                                "type": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "type": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "fuelPercentRemaining": {
+                    "type": "float"
+                },
+                "hasErrors": {
+                    "type": "boolean"
+                },
+                "hybridEVBatteryCapacity": {
+                    "type": "long",
+                    "ignore_malformed": true
+                },
+                "hybridEVBatteryTemp": {
+                    "type": "long",
+                    "ignore_malformed": true
+                },
+                "latitude": {
+                    "type": "float"
+                },
+                "longitude": {
+                    "type": "float"
+                },
+                "make": {
+                    "type": "keyword"
+                },
+                "makeSlug": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "model": {
+                    "type": "keyword"
+                },
+                "modelSlug": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "odometer": {
+                    "type": "float"
+                },
+                "oil": {
+                    "type": "float"
+                },
+                "range": {
+                    "type": "float"
+                },
+                "region": {
+                    "type": "keyword"
+                },
+                "relativeAccelPedalPos": {
+                    "type": "long",
+                    "ignore_malformed": true
+                },
+                "signals": {
+                    "properties": {
+                        "pidtest_relativeaccpedalpos": {
+                            "properties": {
+                                "value": {
+                                    "type": "long",
+                                    "ignore_malformed": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "soc": {
+                    "type": "float"
+                },
+                "speed": {
+                    "type": "float"
+                },
+                "timestamp": {
+                    "type": "date"
+                },
+                "tires": {
+                    "properties": {
+                        "backLeft": {
+                            "type": "long"
+                        },
+                        "backRight": {
+                            "type": "long"
+                        },
+                        "frontLeft": {
+                            "type": "long"
+                        },
+                        "frontRight": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "vehicleId": {
+                    "type": "keyword"
+                },
+                "vin": {
+                    "type": "keyword"
+                },
+                "year": {
+                    "type": "long"
+                }
+            }
+        },
+        "id": {
+            "type": "keyword"
+        },
+        "location": {
+            "type": "geo_point",
+            "ignore_malformed": true
+        },
+        "source": {
+            "type": "keyword"
+        },
+        "specversion": {
+            "type": "keyword"
+        },
+        "subject": {
+            "type": "keyword"
+        },
+        "time": {
+            "type": "date"
+        },
+        "type": {
+            "type": "keyword"
+        }
+    }
+}
