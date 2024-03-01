@@ -1,8 +1,5 @@
 {
     "dynamic": "true",
-    "_size": {
-        "enabled": true
-    },
     "dynamic_date_formats": [
         "strict_date_optional_time",
         "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"

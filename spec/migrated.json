@@ -1,0 +1,153 @@
+[
+    {
+        "elasticName": "vehicle.data.fuelType",
+        "vspecName": "Vehicle_Powertrain_FuelSystem_SupportedFuelTypes"
+    },
+    {
+        "elasticName": "vehicle.data.make",
+        "vspecName": "Vehicle_VehicleIdentification_Brand"
+    },
+    {
+        "elasticName": "vehicle.data.model",
+        "vspecName": "Vehicle_VehicleIdentification_Model"
+    },
+    {
+        "elasticName": "vehicle.data.vin",
+        "vspecName": ""
+    },
+    {
+        "elasticName": "vehicle.data.vehicleId",
+        "vspecName": "Vehicle_DIMO_VehicleID"
+    },
+    {
+        "elasticName": "vehicle.data.definitionId",
+        "vspecName": "Vehicle_DIMO_DefinitionID"
+    },
+    {
+        "elasticName": "vehicle.data.altitude",
+        "vspecName": "Vehicle_CurrentLocation_Altitude"
+    },
+    {
+        "elasticName": "vehicle.data.latitude",
+        "vspecName": "Vehicle_CurrentLocation_Latitude"
+    },
+    {
+        "elasticName": "vehicle.data.longitude",
+        "vspecName": "Vehicle_CurrentLocation_Longitude"
+    },
+    {
+        "elasticName": "vehicle.data.timestamp",
+        "vspecName": "Vehicle_CurrentLocation_Timestamp"
+    },
+    {
+        "elasticName": "vehicle.data.ambientTemp",
+        "vspecName": "Vehicle_Exterior_AirTemperature"
+    },
+    {
+        "elasticName": "vehicle.data.batteryVoltage",
+        "vspecName": "Vehicle_LowVoltageBattery_CurrentVoltage"
+    },
+    {
+        "elasticName": "vehicle.data.barometricPressure",
+        "vspecName": "Vehicle_OBD_BarometricPressure"
+    },
+    {
+        "elasticName": "vehicle.data.engineLoad",
+        "vspecName": "Vehicle_OBD_EngineLoad"
+    },
+    {
+        "elasticName": "vehicle.data.intakeTemp",
+        "vspecName": "Vehicle_OBD_IntakeTemp"
+    },
+    {
+        "elasticName": "vehicle.data.runTime",
+        "vspecName": "Vehicle_OBD_RunTime"
+    },
+    {
+        "elasticName": "vehicle.data.coolantTemp",
+        "vspecName": "Vehicle_Powertrain_CombustionEngine_ECT"
+    },
+    {
+        "elasticName": "vehicle.data.oil",
+        "vspecName": "Vehicle_Powertrain_CombustionEngine_EngineOilLevel"
+    },
+    {
+        "elasticName": "vehicle.data.engineSpeed",
+        "vspecName": "Vehicle_Powertrain_CombustionEngine_Speed"
+    },
+    {
+        "elasticName": "vehicle.data.throttlePosition",
+        "vspecName": "Vehicle_Powertrain_CombustionEngine_TPS"
+    },
+    {
+        "elasticName": "vehicle.data.fuelPercentRemaining",
+        "vspecName": "Vehicle_Powertrain_FuelSystem_AbsoluteLevel"
+    },
+    {
+        "elasticName": "vehicle.data.range",
+        "vspecName": "Vehicle_Powertrain_Range"
+    },
+    {
+        "elasticName": "vehicle.data.chargeLimit",
+        "vspecName": "Vehicle_Powertrain_TractionBattery_Charging_ChargeLimit"
+    },
+    {
+        "elasticName": "vehicle.data.charging",
+        "vspecName": "Vehicle_Powertrain_TractionBattery_Charging_IsCharging"
+    },
+    {
+        "elasticName": "vehicle.data.batteryCapacity",
+        "vspecName": "Vehicle_Powertrain_TractionBattery_GrossCapacity"
+    },
+    {
+        "elasticName": "vehicle.data.soc",
+        "vspecName": "Vehicle_Powertrain_TractionBattery_StateOfCharge_Current"
+    },
+    {
+        "elasticName": "vehicle.data.speed",
+        "vspecName": "Vehicle_Speed"
+    },
+    {
+        "elasticName": "vehicle.data.odometer",
+        "vspecName": "Vehicle_Powertrain_Transmission_TravelledDistance"
+    },
+    {
+        "elasticName": "vehicle.data.year",
+        "vspecName": "Vehicle_VehicleIdentification_Year"
+    },
+    {
+        "elasticName": "vehicle.data.tires.frontLeft",
+        "vspecName": "Vehicle_Chassis_Axle_Row1_Wheel_Left_Tire_Pressure"
+    },
+    {
+        "elasticName": "vehicle.data.tires.frontRight",
+        "vspecName": "Vehicle_Chassis_Axle_Row1_Wheel_Right_Tire_Pressure"
+    },
+    {
+        "elasticName": "vehicle.data.tires.backLeft",
+        "vspecName": "Vehicle_Chassis_Axle_Row2_Wheel_Left_Tire_Pressure"
+    },
+    {
+        "elasticName": "vehicle.data.tires.backRight",
+        "vspecName": "Vehicle_Chassis_Axle_Row2_Wheel_Right_Tire_Pressure"
+    },
+    {
+        "elasticName": "vehicle.subject",
+        "vspecName": "Vehicle_DIMO_Subject"
+    },
+    {
+        "elasticName": "vehicle.time",
+        "vspecName": "Vehicle_DIMO_Timestamp",
+        "clickHouseType": "DateTime",
+        "goType": "time.Time",
+        "isArray": false
+    },
+    {
+        "elasticName": "vehicle.type",
+        "vspecName": "Vehicle_DIMO_Type"
+    },
+    {
+        "elasticName": "vehicle.source",
+        "vspecName": "Vehicle_DIMO_Source"
+    }
+]

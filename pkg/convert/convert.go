@@ -2,8 +2,9 @@ package convert
 
 import (
 	"math"
+	"time"
 
-	vsstable "github.com/KevinJoiner/vss-translator/internal/generated/vss"
+	"github.com/KevinJoiner/vss-translator/internal/generated/vsstable"
 	"github.com/KevinJoiner/vss-translator/internal/model"
 	"github.com/KevinJoiner/vss-translator/internal/protobuf"
 )
@@ -111,7 +112,7 @@ func EsStatusToProtoVehicle(dataPoint *model.DataPoint) *protobuf.Vehicle {
 func ESStatusToCHVehicle(dataPoint *model.DataPoint) *vsstable.Vehicle {
 	return &vsstable.Vehicle{
 		VehicleDIMOSubject:                                   dataPoint.Subject,
-		VehicleDIMOTimestamp:                                 dataPoint.Time,
+		VehicleDIMOTimestamp:                                 stringToTime(dataPoint.Time),
 		VehicleDIMOType:                                      dataPoint.Type,
 		VehicleDIMOSource:                                    dataPoint.Source,
 		VehicleDIMOVehicleID:                                 dataPoint.Data.VehicleID,
@@ -203,4 +204,9 @@ func convertOilLevelToEnums(oilLevel float64) string {
 	default:
 		return "CRITICALLY_HIGH"
 	}
+}
+
+func stringToTime(timestamp string) time.Time {
+	t, _ := time.Parse(time.RFC3339, timestamp)
+	return t
 }

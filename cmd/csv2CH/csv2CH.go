@@ -15,7 +15,8 @@ import (
 func main() {
 	// Command-line flags
 	outputDir := flag.String("output", ".", "Output directory for the generated Go file")
-	filePath := flag.String("file", "path/to/your/csvfile.csv", "Path to the CSV file")
+	filePath := flag.String("csv", "./vspec.csv", "Path to the vspec CSV file")
+	tansPath := flag.String("translations", "./translations.json", "Path to the translations JSON file")
 	flag.Parse()
 
 	// Read CSV file
@@ -25,7 +26,14 @@ func main() {
 		return
 	}
 
-	err = codegen.GenerateCode(signals, *outputDir)
+	// Read translation file
+	translations, err := codegen.ReadTranslationJSON(*tansPath)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+
+	err = codegen.GenerateCode(signals, translations, *outputDir)
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 	}

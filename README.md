@@ -5,13 +5,13 @@ Random assortment of test code for migrating Elastic -> CH nothing here is set i
 This will convert a given CSV that was generated via vspec to a new CH table and matching go struct. This can be run with `go generate` via generate.go
 
 ### cmd/esVsch
-This binary will start a gernerate fake vehicle data start a test elastic container and a test clickhouse container then insert the fake vehicle data into both databases in their respective formats that mimick what is in production. The program will wait for ctrl-c to exit so you can exec into the containers and run any test queries you may have.
+This binary will start a generate fake vehicle data start a test elastic container and a test clickhouse container then insert the fake vehicle data into both databases in their respective formats that mimick what is in production. The program will wait for ctrl-c to exit so you can exec into the containers and run any test queries you may have.
 
 #### Test
 Run the following for test output
 ```bash
- go install golang.org/x/perf/cmd/benchstat@latest
-go test -run='^$' -bench=. -count=10 > insertionBench.txt
+go install golang.org/x/perf/cmd/benchstat@latest
+go test -run='^$' -bench=. -count=10 -cpu 1 > insertionBench.txt
 benchstat -col  /DB insertionBench.txt
 ```
 Output:
@@ -37,8 +37,8 @@ geomean                                       30.21m           42.48m          +
 ```
 
 ### cmd/es-ch 
-This a main.go I am using to test various CH client code with the different libraies.
+This a main.go I am using to test various CH client code with the different libraries.
 
 ### internal/protbuf
-This contains random code from when we were investigating infering the schema from protobuf.
+This contains random code from when we were investigating inferring the schema from protobuf.
 

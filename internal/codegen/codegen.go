@@ -1,14 +1,16 @@
 package codegen
 
 import (
+	"bytes"
 	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"slices"
 	"strings"
 	"text/template"
+
+	"golang.org/x/tools/imports"
 )
 
 const (
@@ -25,17 +27,41 @@ var structTemplate string
 //go:embed vssTable.tmpl
 var clickhouseTableTemplate string
 
-func GenerateCode(signals []SignalInfo, outputDir string) (err error) {
+type TemplateData struct {
+	Signals     []*SignalInfo
+	DataSignals []*SignalInfo
+}
+
+func GenerateCode(signals []*SignalInfo, translations *Translations, outputDir string) (err error) {
 	// Sort the signals by name
-	slices.SortStableFunc(signals, func(a, b SignalInfo) int {
+	slices.SortStableFunc(signals, func(a, b *SignalInfo) int {
 		return strings.Compare(a.Name, b.Name)
 	})
 
+	dataSignals := []*SignalInfo{}
+	for _, signal := range signals {
+		trans, ok := translations.FromVspecName[signal.CHName]
+		if !ok || signal.DataType == "" {
+			continue
+		}
+		if trans.ClickHouseType != "" {
+			signal.BaseCHType = trans.ClickHouseType
+		}
+		if trans.GoType != "" {
+			signal.BaseGoType = trans.GoType
+		}
+		if trans.IsArray != nil {
+			signal.IsArray = *trans.IsArray
+		}
+
+		dataSignals = append(dataSignals, signal)
+	}
+	data := TemplateData{
+		Signals:     signals,
+		DataSignals: dataSignals,
+	}
 	// Create a new template and parse the struct template
 	tmpl, err := template.New("structTemplate").Funcs(template.FuncMap{
-		"goName":      goName,
-		"chName":      chName,
-		"toGOType":    toGOType,
 		"sqlFileName": func() string { return clickhouseFileName },
 	}).Parse(structTemplate)
 	if err != nil {
@@ -44,8 +70,6 @@ func GenerateCode(signals []SignalInfo, outputDir string) (err error) {
 
 	// Create a new ClickHouse table template
 	clickhouseTableTmpl, err := template.New("clickhouseTableTemplate").Funcs(template.FuncMap{
-		"chName":     chName,
-		"toCHType":   toCHType,
 		"escapeDesc": escapeDesc,
 	}).Parse(clickhouseTableTemplate)
 	if err != nil {
@@ -75,9 +99,19 @@ func GenerateCode(signals []SignalInfo, outputDir string) (err error) {
 		}
 	}()
 
-	err = tmpl.Execute(goOutputFile, signals)
-	if err != nil {
+	var outBuf bytes.Buffer
+	if err := tmpl.Execute(&outBuf, &data); err != nil {
 		return fmt.Errorf("error executing template: %w", err)
+	}
+	formatted, err := imports.Process("", outBuf.Bytes(), &imports.Options{
+		AllErrors: true, Comments: true, TabIndent: true, TabWidth: 4,
+	})
+	if err != nil {
+		return fmt.Errorf("error formatting source: %w", err)
+	}
+	_, err = goOutputFile.Write(formatted)
+	if err != nil {
+		return fmt.Errorf("error writing to file: %w", err)
 	}
 
 	// Execute the ClickHouse table template for the signals
@@ -92,18 +126,12 @@ func GenerateCode(signals []SignalInfo, outputDir string) (err error) {
 		}
 	}()
 
-	err = clickhouseTableTmpl.Execute(clickhouseTableOutputFile, signals)
+	err = clickhouseTableTmpl.Execute(clickhouseTableOutputFile, &data)
 	if err != nil {
 		return fmt.Errorf("error executing ClickHouse table template: %w", err)
 	}
 
 	return nil
-}
-
-func goName(name string) string {
-	// Remove special characters and ensure PascalCase
-	re := regexp.MustCompile("[^a-zA-Z0-9]+")
-	return re.ReplaceAllString(name, "")
 }
 
 // toGOType converts vspec type to golang types
@@ -129,46 +157,6 @@ func toGOType(dataType string) string {
 	}
 }
 
-// toCHType converts vspec type to clickhouse types.
-func toCHType(dataType string) string {
-	// if name is ends with [] move it to the front of the type
-	baseType := dataType
-	// string[] -> Array(String)
-	isArray := strings.HasSuffix(dataType, "[]")
-	if isArray {
-		baseType = dataType[:len(dataType)-2]
-	}
-
-	switch baseType {
-	case "uint8":
-		baseType = "UInt8"
-	case "int8":
-		baseType = "Int8"
-	case "uint16":
-		baseType = "UInt16"
-	case "int16":
-		baseType = "Int16"
-	case "uint32":
-		baseType = "UInt32"
-	case "int32":
-		baseType = "Int32"
-	case "uint64":
-		baseType = "UInt64"
-	case "int64":
-		baseType = "Int64"
-	case "string":
-		baseType = "String"
-	case "boolean":
-		baseType = "Bool"
-	case "float":
-		baseType = "Float32"
-	case "double":
-		baseType = "Float64"
-	default:
-		baseType = "String"
-	}
-	if isArray {
-		baseType = "Array(" + baseType + ")"
-	}
-	return baseType
+func escapeDesc(desc string) string {
+	return strings.ReplaceAll(desc, `'`, `\'`)
 }

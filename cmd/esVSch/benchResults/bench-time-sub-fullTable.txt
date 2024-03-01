@@ -1,0 +1,256 @@
+2024/02/28 09:50:40 github.com/testcontainers/testcontainers-go - Connected to docker: 
+  Server Version: 23.0.6
+  API Version: 1.42
+  Operating System: Alpine Linux v3.18
+  Total Memory: 15973 MB
+  Resolved Docker Host: unix:///var/run/docker.sock
+  Resolved Docker Socket Path: /var/run/docker.sock
+  Test SessionID: f3ebfc1d88a2da897e1198d38b81d23b2b44c495b13040a2db684446c5ca6619
+  Test ProcessID: 2b67e200-5f58-41f0-b4a3-3763625888b7
+2024/02/28 09:50:40 🐳 Creating container for image testcontainers/ryuk:0.6.0
+2024/02/28 09:50:40 ✅ Container created: 9ca8a2828ad7
+2024/02/28 09:50:40 🐳 Starting container: 9ca8a2828ad7
+2024/02/28 09:50:41 ✅ Container started: 9ca8a2828ad7
+2024/02/28 09:50:41 🚧 Waiting for container id 9ca8a2828ad7 image: testcontainers/ryuk:0.6.0. Waiting for: &{Port:8080/tcp timeout:<nil> PollInterval:100ms}
+2024/02/28 09:50:41 🔔 Container is ready: 9ca8a2828ad7
+2024/02/28 09:50:41 🐳 Creating container for image docker.elastic.co/elasticsearch/elasticsearch:8.3.0
+2024/02/28 09:50:41 ✅ Container created: ddda79fc5f08
+2024/02/28 09:50:41 🐳 Starting container: ddda79fc5f08
+2024/02/28 09:50:42 ✅ Container started: ddda79fc5f08
+2024/02/28 09:50:42 🚧 Waiting for container id ddda79fc5f08 image: docker.elastic.co/elasticsearch/elasticsearch:8.3.0. Waiting for: &{timeout:<nil> Log:.*("message":\s?"started(\s|")?.*|]\sstarted\n) IsRegexp:true Occurrence:1 PollInterval:100ms}
+2024/02/28 09:50:56 🔔 Container is ready: ddda79fc5f08
+2024/02/28 09:50:57 🐳 Creating container for image clickhouse/clickhouse-server:23.3.8.21-alpine
+2024/02/28 09:50:57 ✅ Container created: db6ce56dc65a
+2024/02/28 09:50:57 🐳 Starting container: db6ce56dc65a
+2024/02/28 09:50:57 ✅ Container started: db6ce56dc65a
+2024/02/28 09:50:57 🚧 Waiting for container id db6ce56dc65a image: clickhouse/clickhouse-server:23.3.8.21-alpine. Waiting for: &{timeout:<nil> deadline:<nil> Strategies:[0x140001bef80]}
+2024/02/28 09:51:00 🔔 Container is ready: db6ce56dc65a
+goos: darwin
+goarch: arm64
+pkg: github.com/KevinJoiner/vss-translator/cmd/esVSch
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      67	  16564187 ns/op	  334251 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      73	  16098092 ns/op	  334190 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      73	  16300525 ns/op	  334212 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      72	  16768609 ns/op	  334234 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      69	  16128468 ns/op	  334199 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      66	  16059541 ns/op	  334163 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      68	  16081423 ns/op	  334149 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      69	  16706180 ns/op	  334299 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      66	  16932630 ns/op	  334237 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=ClickHouseSubjectAndTime         	      72	  17037936 ns/op	  334311 B/op	     300 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     558	   1844693 ns/op	   12121 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     631	   1646932 ns/op	   12121 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     759	   1424679 ns/op	   12121 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     801	   1348392 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     824	   1354775 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     877	   1316164 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     902	   1254081 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     914	   1272808 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     978	   1173210 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1Vehicles/DB=Elastic                          	     982	   1203397 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      63	  16452479 ns/op	  334268 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      70	  16307742 ns/op	  334216 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      68	  16378619 ns/op	  334217 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      69	  18041049 ns/op	  334362 B/op	     300 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      66	  16657386 ns/op	  334247 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      67	  15856115 ns/op	  334202 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      68	  16368411 ns/op	  334186 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      66	  16231312 ns/op	  334200 B/op	     298 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      70	  16918785 ns/op	  334288 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=ClickHouseSubjectAndTime         	      63	  16440778 ns/op	  334233 B/op	     299 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	     993	   1083785 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1108	   1061902 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	     992	   1121291 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	     964	   1137779 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1011	   1165655 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1006	   1137373 ns/op	   12121 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1120	   1050406 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1024	   1067997 ns/op	   12128 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1116	   1024916 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert2Vehicles/DB=Elastic                          	    1070	   1039458 ns/op	   12120 B/op	     218 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      70	  16306219 ns/op	  334243 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      66	  16448908 ns/op	  334223 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      69	  17269783 ns/op	  334307 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      72	  16896274 ns/op	  334337 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      68	  17112240 ns/op	  334397 B/op	     304 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      72	  16809723 ns/op	  334306 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      64	  16908495 ns/op	  334322 B/op	     303 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      70	  17189109 ns/op	  334377 B/op	     304 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      61	  17475818 ns/op	  334423 B/op	     304 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=ClickHouseSubjectAndTime         	      72	  15946692 ns/op	  334151 B/op	     301 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	     843	   1300786 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	     957	   1236711 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	    1054	   1162255 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	    1022	   1212012 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	     943	   1269218 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	     865	   1249838 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	    1023	   1145738 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	    1022	   1107235 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	    1070	   1157304 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert4Vehicles/DB=Elastic                          	     883	   1253012 ns/op	   19529 B/op	     354 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      69	  17081118 ns/op	  334761 B/op	     314 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      73	  17307709 ns/op	  334718 B/op	     313 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      64	  17959548 ns/op	  334838 B/op	     314 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      67	  17228448 ns/op	  334746 B/op	     314 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      64	  16224357 ns/op	  334604 B/op	     313 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      72	  19723025 ns/op	  334690 B/op	     314 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      58	  20217823 ns/op	  335098 B/op	     317 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      54	  20743707 ns/op	  334914 B/op	     317 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      61	  18026933 ns/op	  334700 B/op	     314 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=ClickHouseSubjectAndTime         	      66	  18852104 ns/op	  334845 B/op	     316 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     687	   1553753 ns/op	   35930 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     762	   1566833 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     831	   1493065 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     795	   1594233 ns/op	   35930 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     751	   1477234 ns/op	   35930 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     763	   1466613 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     812	   1388187 ns/op	   35930 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     828	   1527503 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     808	   1469448 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert8Vehicles/DB=Elastic                          	     816	   1397427 ns/op	   35929 B/op	     626 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      60	  20873546 ns/op	  335827 B/op	     334 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      62	  21247809 ns/op	  335745 B/op	     333 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      69	  18314549 ns/op	  335603 B/op	     332 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      62	  18760473 ns/op	  335752 B/op	     333 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      56	  18853499 ns/op	  335747 B/op	     333 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      63	  19518357 ns/op	  335844 B/op	     334 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      64	  18316101 ns/op	  335663 B/op	     333 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      64	  19893650 ns/op	  335708 B/op	     332 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      58	  22270579 ns/op	  335843 B/op	     335 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=ClickHouseSubjectAndTime        	      58	  22534571 ns/op	  335832 B/op	     334 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     572	   2049710 ns/op	   73717 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     633	   2035225 ns/op	   73707 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     664	   1833578 ns/op	   73707 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     697	   2196726 ns/op	   73708 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     532	   2026720 ns/op	   73708 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     538	   2090815 ns/op	   73708 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     597	   1767866 ns/op	   73721 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     620	   1727050 ns/op	   73707 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     691	   1882262 ns/op	   73708 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert16Vehicles/DB=Elastic                         	     690	   1715115 ns/op	   73720 B/op	    1165 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      57	  20239895 ns/op	  337319 B/op	     362 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      57	  22430906 ns/op	  337465 B/op	     363 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      56	  20733020 ns/op	  337410 B/op	     362 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      61	  22628115 ns/op	  337452 B/op	     364 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      52	  20629091 ns/op	  337490 B/op	     364 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      64	  20370635 ns/op	  337404 B/op	     363 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      67	  19223275 ns/op	  337366 B/op	     362 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      60	  19309353 ns/op	  337286 B/op	     361 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      61	  19419149 ns/op	  337406 B/op	     362 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=ClickHouseSubjectAndTime        	      74	  19079538 ns/op	  337284 B/op	     362 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     366	   2929302 ns/op	  141168 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     435	   2513326 ns/op	  141166 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     489	   2349938 ns/op	  141167 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     631	   2037778 ns/op	  141167 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     614	   2203950 ns/op	  141167 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     529	   2183605 ns/op	  141167 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     556	   2139022 ns/op	  141181 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     565	   2223594 ns/op	  141166 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     478	   2279714 ns/op	  141167 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert32Vehicles/DB=Elastic                         	     484	   2313084 ns/op	  141168 B/op	    2239 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      57	  19486692 ns/op	  340198 B/op	     413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      50	  28420995 ns/op	  340561 B/op	     416 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      54	  20586301 ns/op	  340457 B/op	     415 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      45	  22465494 ns/op	  340562 B/op	     416 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      49	  21000852 ns/op	  340440 B/op	     415 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      55	  20598302 ns/op	  340342 B/op	     414 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      57	  20830360 ns/op	  340504 B/op	     416 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      62	  22052932 ns/op	  340372 B/op	     415 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      56	  19955574 ns/op	  340407 B/op	     415 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=ClickHouseSubjectAndTime        	      64	  19046697 ns/op	  340388 B/op	     415 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     240	   4565954 ns/op	  282744 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     243	   4947621 ns/op	  282785 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     297	   4117166 ns/op	  282743 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     308	   3276533 ns/op	  282769 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     331	   3346107 ns/op	  282741 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     344	   3546296 ns/op	  282743 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     363	   3307064 ns/op	  282742 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     382	   3361860 ns/op	  282763 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     349	   3438428 ns/op	  282741 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert64Vehicles/DB=Elastic                         	     352	   3706898 ns/op	  282743 B/op	    4386 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      56	  19329235 ns/op	  347972 B/op	     516 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      62	  20642763 ns/op	  347861 B/op	     515 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      54	  21077519 ns/op	  348050 B/op	     517 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      52	  21455038 ns/op	  348145 B/op	     518 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      62	  21536106 ns/op	  348118 B/op	     517 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      67	  19554669 ns/op	  348009 B/op	     516 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      63	  19194293 ns/op	  347930 B/op	     516 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      66	  19924060 ns/op	  348077 B/op	     517 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      58	  19585697 ns/op	  347929 B/op	     516 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=ClickHouseSubjectAndTime       	      48	  20842659 ns/op	  348124 B/op	     518 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     142	   7244198 ns/op	  541826 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     183	   6859806 ns/op	  541829 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     193	   5578152 ns/op	  541871 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     218	   6232381 ns/op	  541921 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     200	   5718471 ns/op	  541826 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     189	   6402240 ns/op	  541828 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     184	   6447542 ns/op	  541828 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     100	  28458660 ns/op	  541830 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     174	   6609259 ns/op	  541873 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert128Vehicles/DB=Elastic                        	     177	   7243518 ns/op	  541825 B/op	    8677 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      48	  21304246 ns/op	  361350 B/op	     715 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      45	  22265887 ns/op	  361184 B/op	     713 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      46	  22407543 ns/op	  361127 B/op	     712 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      54	  20513083 ns/op	  361199 B/op	     714 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      52	  21242147 ns/op	  361197 B/op	     713 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      43	  23414005 ns/op	  361273 B/op	     714 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      51	  20557563 ns/op	  361168 B/op	     713 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      67	  18202517 ns/op	  360978 B/op	     711 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      57	  22518605 ns/op	  361135 B/op	     713 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=ClickHouseSubjectAndTime       	      50	  20210014 ns/op	  361160 B/op	     713 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	      93	  11537188 ns/op	 1048481 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  10547430 ns/op	 1048477 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     130	   8233247 ns/op	 1048539 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     126	   9794556 ns/op	 1048543 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  10853157 ns/op	 1048484 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  11846881 ns/op	 1048477 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  11086705 ns/op	 1048559 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  10628568 ns/op	 1048477 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     127	   9754777 ns/op	 1048477 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert256Vehicles/DB=Elastic                        	     100	  10579452 ns/op	 1048559 B/op	   17256 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      48	  22956630 ns/op	  389270 B/op	    1104 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      50	  22404358 ns/op	  388945 B/op	    1100 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      56	  24913031 ns/op	  389237 B/op	    1103 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      52	  19423161 ns/op	  389004 B/op	    1101 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      54	  21601947 ns/op	  389049 B/op	    1101 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      50	  20351739 ns/op	  389148 B/op	    1103 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      60	  19177006 ns/op	  388940 B/op	    1100 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      48	  21876732 ns/op	  389293 B/op	    1104 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      63	  20990035 ns/op	  389078 B/op	    1101 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=ClickHouseSubjectAndTime       	      66	  19875511 ns/op	  389019 B/op	    1102 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      69	  17615676 ns/op	 2061938 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      97	  13260205 ns/op	 2061940 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      93	  12029264 ns/op	 2061935 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      91	  12582060 ns/op	 2062028 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	     100	  13891745 ns/op	 2061939 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      96	  11946738 ns/op	 2061939 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	     100	  17030838 ns/op	 2062351 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      86	  19902744 ns/op	 2062026 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      86	  15604785 ns/op	 2061939 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert512Vehicles/DB=Elastic                        	      90	  15439141 ns/op	 2061934 B/op	   34413 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      42	  25307276 ns/op	  457795 B/op	    1878 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      42	  26719123 ns/op	  457907 B/op	    1879 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      38	  39184128 ns/op	  458023 B/op	    1881 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      40	  29104498 ns/op	  458007 B/op	    1880 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      50	  21961024 ns/op	  457881 B/op	    1879 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      52	  25083398 ns/op	  457746 B/op	    1877 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      51	  21564338 ns/op	  457797 B/op	    1878 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      46	  23345883 ns/op	  457936 B/op	    1880 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      52	  20983911 ns/op	  457877 B/op	    1879 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=ClickHouseSubjectAndTime      	      50	  21986501 ns/op	  457796 B/op	    1878 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      20	 132985767 ns/op	 4088716 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      31	 127346251 ns/op	 4088681 B/op	   68722 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      45	  24413444 ns/op	 4088872 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      49	  24244180 ns/op	 4088686 B/op	   68722 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      48	  25212111 ns/op	 4088693 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      58	  29439512 ns/op	 4088680 B/op	   68722 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      46	  22549678 ns/op	 4088689 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      45	  22479443 ns/op	 4088691 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      55	  22028748 ns/op	 4088834 B/op	   68723 allocs/op
+BenchmarkClickHouseVsElasstic/Insert1024Vehicles/DB=Elastic                       	      56	  22099867 ns/op	 4088693 B/op	   68723 allocs/op
+2024/02/28 09:56:38 🐳 Terminating container: db6ce56dc65a
+2024/02/28 09:56:44 🚫 Container terminated: db6ce56dc65a
+2024/02/28 09:56:44 🐳 Terminating container: ddda79fc5f08
+2024/02/28 09:56:44 🚫 Container terminated: ddda79fc5f08
+PASS
+ok  	github.com/KevinJoiner/vss-translator/cmd/esVSch	364.769s

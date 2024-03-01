@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS vss (
-{{- range . }}
-	{{- if eq .DataType "" }} {{ continue }} {{ end }}
-	{{ chName .Name }} {{ toCHType .DataType }} COMMENT '{{ escapeDesc .Desc }}',
+{{- range .DataSignals }}
+	{{ .CHName }} {{ .CHType }} COMMENT '{{ escapeDesc .Desc }}',
 {{- end }}
 )
 ENGINE = MergeTree()

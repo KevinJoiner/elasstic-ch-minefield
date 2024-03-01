@@ -109,3 +109,12 @@ func AddStatusMapping(ctx context.Context, client *elasticsearch.TypedClient) er
 
 	return nil
 }
+
+// TruncateStatusIndex truncates the status index.
+func TruncateStatusIndex(ctx context.Context, client *elasticsearch.TypedClient) error {
+	_, err := client.Indices.Delete(StatusIndex).Do(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to delete index: %w", err)
+	}
+	return AddStatusMapping(ctx, client)
+}
